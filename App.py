@@ -25,23 +25,26 @@ class ParkingLot:
                 break
 
 class ParkingLotScanner:
-    def __init__(self):
+    def __init__(self, parking_lot, notification_manager):
         # initialize variables and setup connections to the camera
+        self.parking_lot = parking_lot
+        self.notification_manager = notification_manager
         pass
 
-    def start_scanning(self):
+    def scan_parking_lot(self):
         # Begin scanning the parking lot video feed 
         # and detecting available parking spots
-        pass
-
-    def stop_scanning(self):
-        # Stop the scanning process
-        pass
-
-    def detect_available_spots(self, frame):
-        # Perform image processing on the provided video feed
-        # to detect available parking spots
-        pass
+        available_spots = []
+        for spot in self.parking_lot.spots:
+            if not spot.is_occupied:
+                available_spots.append(spot.spot_id)
+        return available_spots
+    
+    def check_and_send_notification(self):
+        available_spots = self.scan_parking_lot()
+        if available_spots:
+            message = f"Parking spots {available_spots} are available."
+            self.notification_manager.send_notifcation(message)
 
 class NotificationManager:
     @staticmethod
