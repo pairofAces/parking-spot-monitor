@@ -5,7 +5,24 @@ class ParkingSpot:
         self.spot_id = spot_id
         self.is_occupied = False
 
+class ParkingLot:
+    def __init__(self):
+        self.spots = []
+    
+    def add_spots(self, spot):
+        self.spots.append(spot)
 
+    def occupy_spot(self, spot_id):
+        for spot in self.spots:
+            if spot.spot_id == spot_id:
+                spot.is_occupied = True
+                break
+    
+    def vacant_spot(self, spot_id):
+        for spot in self.spots:
+            if spot.spot_id == spot_id:
+                spot.is_occupied = False
+                break
 
 class ParkingLotScanner:
     def __init__(self):
