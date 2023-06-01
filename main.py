@@ -36,3 +36,6 @@ def scan_parking_lot():
     available_spots = scanner.scan_parking_lot()
     return {"message": "Parking Lot scanned.", "available spots": available_spots}
 
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
