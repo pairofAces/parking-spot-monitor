@@ -47,7 +47,13 @@ class ParkingLot:
     
     @classmethod
     def load_from_json(cls, filename):
-        
+        try:
+            with open(filename, 'w') as file:
+                data = json.load(file)
+        except FileNotFoundError:
+            return None
+        return cls.from_dict(data) if data else None
+
 '''
     def occupy_spot(self, spot_id):
         for spot in self.spots:
