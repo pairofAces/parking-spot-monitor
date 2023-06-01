@@ -18,7 +18,7 @@ class ParkingLot:
                 spot.is_occupied = True
                 break
     
-    def vacant_spot(self, spot_id):
+    def vacate_spot(self, spot_id):
         for spot in self.spots:
             if spot.spot_id == spot_id:
                 spot.is_occupied = False
