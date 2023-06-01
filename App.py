@@ -1,9 +1,24 @@
 # This file contains the Classes that will be used for the project
+import json
 
 class ParkingSpot:
     def __init__(self, spot_id):
         self.spot_id = spot_id
         self.is_occupied = False
+    
+    def to_dict(self):
+        return {
+            'spot_id': self.spot_id,
+            'is_occupied': self.is_occupied
+        }
+    
+    @classmethod
+    def from_dict(cls, data):
+        spot_id = data['spot_id']
+        is_occupied = data['is_occupied']
+        spot = cls(spot_id)
+        spot.is_occupied = is_occupied
+        return spot
 
 class ParkingLot:
     def __init__(self):
