@@ -24,9 +24,31 @@ class ParkingLot:
     def __init__(self):
         self.spots = []
     
-    def add_spots(self, spot):
+    def add_spot(self, spot):
         self.spots.append(spot)
 
+    def to_dict(self):
+        return {
+            'spots': [spot.to_dict() for spot in self.spots]
+        }
+    
+    @classmethod
+    def from_dict(cls, data):
+        parkinglot = cls()
+        for spot_data in data['spots']:
+            spot = ParkingSpot.from_dict(spot_data)
+            parkinglot.add_spot(spot)
+        return parkinglot
+    
+    def save_to_json(self, filename):
+        data = self.to_dict()
+        with open(filename, 'w') as file:
+            json.dump(data, file, indent=4)
+    
+    @classmethod
+    def load_from_json(cls, filename):
+        
+'''
     def occupy_spot(self, spot_id):
         for spot in self.spots:
             if spot.spot_id == spot_id:
@@ -38,6 +60,7 @@ class ParkingLot:
             if spot.spot_id == spot_id:
                 spot.is_occupied = False
                 break
+'''
 
 class ParkingLotScanner:
     def __init__(self, parking_lot, notification_manager):
