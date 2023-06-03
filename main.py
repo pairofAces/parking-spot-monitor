@@ -37,7 +37,7 @@ def vacate_parking_spot(spot_id: int):
     parking_lot.vacant_spot(spot_id)
     return {"message": f"Parking spot {spot_id} is vacant"}
 
-@app.post('/scam')
+@app.post('/scan')
 def scan_parking_lot():
     available_spots = scanner.scan_parking_lot()
     return {"message": "Parking Lot scanned.", "available spots": available_spots}
