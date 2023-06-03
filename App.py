@@ -77,7 +77,6 @@ class ParkingLotScanner:
         # initialize variables and setup connections to the camera
         self.parking_lot = parking_lot
         self.notification_manager = notification_manager
-        pass
 
     def scan_parking_lot(self):
         # Begin scanning the parking lot video feed 
