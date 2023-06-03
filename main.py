@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+import uvicorn
 from App import ParkingSpot, ParkingLot, ParkingLotScanner, NotificationManager
 
 app = FastAPI()
@@ -27,6 +28,7 @@ def get_parking_spot(spot_id: int):
 
 @app.post('/parkingspot/{spot_id}/occupy')
 def occupy_parking_spot(spot_id: int):
+    # Update this method!!!
     parking_lot.occupy_spot(spot_id)
     return {"message": f"Parking spot {spot_id} has been occupied"}
 
