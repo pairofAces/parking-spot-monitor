@@ -53,20 +53,24 @@ class ParkingLot:
         except FileNotFoundError:
             return None
         return cls.from_dict(data) if data else None
-
-'''
-    def occupy_spot(self, spot_id):
+    
+    def get_spot_from_id(self, spot_id):
         for spot in self.spots:
-            if spot.spot_id == spot_id:
-                spot.is_occupied = True
-                break
+            if spot_id == spot:
+                return spot
+        return None
+
+    def occupy_spot(self, spot_id):
+        spot = self.get_spot_from_id(spot_id)
+        if spot:
+            spot.is_occupied = True
+        return spot
     
     def vacate_spot(self, spot_id):
-        for spot in self.spots:
-            if spot.spot_id == spot_id:
-                spot.is_occupied = False
-                break
-'''
+        spot = self.get_spot_from_id(spot_id)
+        if spot:
+            spot.is_occupied = False
+        return spot
 
 class ParkingLotScanner:
     def __init__(self, parking_lot, notification_manager):

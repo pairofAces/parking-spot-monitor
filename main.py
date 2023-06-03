@@ -15,10 +15,10 @@ def read_root():
 
 @app.get('/parkinglot')
 def get_parking_lot():
-    return parking_lot
+    return parking_lot.to_dict()
 
-@app.get('/parkingspots')
-def get_parking_spots():
+@app.get('/parkingspot/{spot_id}')
+def get_parking_spot(spot_id: int):
     return parking_lot.spots
 
 @app.post('/parkingspot/{spot_id}/occupy')
