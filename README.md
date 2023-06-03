@@ -18,3 +18,23 @@
 - FastAPI
 - uvicorn
  -->
+
+## Installation
+
+<!-- 1. Clone this repository to your local machine using the following command: -->
+
+'''
+git clone https://github.com/your-username/parking-lot-scanner.git
+'''
+
+<!-- 2. Navigate to the project Directory -->
+
+'''
+cd parking-lot-scanner
+'''
+
+<!-- 3. Install required Python dependencies -->
+
+'''
+pip install -r requirements.txt
+'''
