@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from App import ParkingSpot, ParkingLot, ParkingLotScanner, NotificationManager
 
 app = FastAPI()
@@ -19,7 +19,11 @@ def get_parking_lot():
 
 @app.get('/parkingspot/{spot_id}')
 def get_parking_spot(spot_id: int):
-    return parking_lot.spots
+    spot = parking_lot.get_spot_from_id(spot_id)
+    if spot:
+        return {'spot_id': spot.spot_id, 'is_occupied': spot.is_occupied}
+    else:
+        raise HTTPException(status_code=404, detail=f"Parking spot {spot_id} is not found")
 
 @app.post('/parkingspot/{spot_id}/occupy')
 def occupy_parking_spot(spot_id: int):
