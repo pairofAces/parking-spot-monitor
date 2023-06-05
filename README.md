@@ -34,3 +34,13 @@ cd parking-lot-scanner
 3. Install required Python dependencies
 
 pip install -r requirements.txt
+
+## Usage
+
+1. Make sure your camera is properly connected to your system
+2. Run the FastAPI server using the following command:
+
+uvicorn main:app --reload
+
+3. Access API endpoints in your browser or using API testing tools like Postman.
+- API base URL: 'https://localhost:8000'
