@@ -44,3 +44,15 @@ uvicorn main:app --reload
 
 3. Access API endpoints in your browser or using API testing tools like Postman.
 - API base URL: 'https://localhost:8000'
+
+### API Endpoints
+
+- `Get /`: Get a welcome message.
+- `Get /parking_lot`: Get current parking lot data.
+- `Get /parking_lot/{spot_id}`: Get information about a specific parking spot.
+- `Put /parking_lot/{spot_id}`: Update the occupancy status of a parking spot.
+- `Post /parking_lot/scan`: Scan the parking lot and get a list of available spots.
+
+4. Customize the 'NotificationManager' class to integrate with your preferred method of sending text messages. 
+
+5. Modify the code as needed to fit your specific parking lot setup and requirements. 
