@@ -26,6 +26,13 @@ def get_parking_spot(spot_id: int):
     else:
         raise HTTPException(status_code=404, detail=f"Parking spot {spot_id} is not found")
 
+# updating endpoint to get the most recent parking spot status
+@app.put('/parkinglot/{spot_id}')
+def update_parking_spot(spot_id: int, is_occupied:bool):
+    # This should take care of the logic of either case of a parking spot
+    # being occupied or vacant
+    pass
+'''
 @app.post('/parkingspot/{spot_id}/occupy')
 def occupy_parking_spot(spot_id: int):
     # Update this method!!!
@@ -36,6 +43,7 @@ def occupy_parking_spot(spot_id: int):
 def vacate_parking_spot(spot_id: int):
     parking_lot.vacant_spot(spot_id)
     return {"message": f"Parking spot {spot_id} is vacant"}
+'''
 
 @app.post('/scan')
 def scan_parking_lot():
