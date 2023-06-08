@@ -31,7 +31,20 @@ def get_parking_spot(spot_id: int):
 def update_parking_spot(spot_id: int, is_occupied:bool):
     # This should take care of the logic of either case of a parking spot
     # being occupied or vacant
-    pass
+    spot = parking_lot.get_spot_from_id(spot_id)
+    if spot:
+        spot.is_occupied = is_occupied
+        parking_lot.save_to_json('parking_lot.json')
+
+        if is_occupied:
+            notification_manager.send_notification(f"Parking spot {spot_id} is now occupied")
+        else:
+            notification_manager.send_notification(f"Parking spot {spot_id} is vacant")
+        
+        return {"message": f"Parking spot {spot_id} updated successfully"}
+    else:
+        raise HTTPException(status_code=404, detail=f"Parking spot {spot_id} not found")
+
 '''
 @app.post('/parkingspot/{spot_id}/occupy')
 def occupy_parking_spot(spot_id: int):
