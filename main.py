@@ -64,5 +64,12 @@ def scan_parking_lot():
     return {"message": "Parking Lot scanned.", "available spots": available_spots}
 
 if __name__ == "__main__":
-    import uvicorn
+    loaded_parking_lot = ParkingLot.load_from_json('parking_lot.json')
+    if loaded_parking_lot:
+        parking_lot = loaded_parking_lot
+    else:
+        for i in range(1,26):
+            spot = ParkingSpot(i)
+            parking_lot.add_spot(spot)
+
     uvicorn.run(app, host="0.0.0.0", port=8000)
